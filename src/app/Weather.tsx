@@ -4,23 +4,27 @@ import { Temperature } from "@/components/Temperature";
 import { ScrollView, Text, View } from "react-native";
 import { CardWeek } from "@/components/CardWeek";
 import { PropertiesSun } from "@/components/PropertiesSun";
+import { useWeatherContext } from "@/context/UseWeather";
 
 export function Weather() {
+  const { weatherData } = useWeatherContext();
+  const tempo = weatherData?.currently + "";
+
+  const getContainerStyle = (currently: string) => {
+    return currently === "dia" ? "bg-sky-500" : "bg-sky-700"; // Defina os estilos desejados para cada período do dia
+  };
+
   return (
-    <ScrollView>
-      <View className="flex-1 m-12">
+    <View className={`flex-1 p-12 ${getContainerStyle(tempo)} `}>
+      <ScrollView>
         <Header />
-        <View className="flex-1 mt-4">
-          <Temperature />
-        </View>
-        <View className="flex-1 mt-4">
+        <Temperature />
+        <View className="my-4">
           <PropertiesWeather />
           <PropertiesSun />
         </View>
-        <View className="flex-1">
-          <CardWeek />
-        </View>
-      </View>
-    </ScrollView>
+        <CardWeek />
+      </ScrollView>
+    </View>
   );
 }

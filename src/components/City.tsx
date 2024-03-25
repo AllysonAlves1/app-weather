@@ -2,13 +2,17 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Dialog, DialogContent, DialogTrigger } from "./Dialog";
 import { Input } from "./Input";
 import { Button } from "./Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWeatherContext } from "@/context/UseWeather";
 import axios from "axios";
 
 export function City() {
   const { weatherData, updateWeatherData } = useWeatherContext();
   const [newCity, setNewCity] = useState("");
+
+  useEffect(() => {
+    handleSearch();
+  }, []);
 
   const handleSearch = async () => {
     try {
@@ -38,7 +42,9 @@ export function City() {
               source={require("@/assets/location.png")}
               className="w-6 h-6"
             />
-            <Text className="mx-2 text-lg text-white">{weatherData?.city_name || 'Localização'}</Text>
+            <Text className="mx-2 text-lg text-white">
+              {weatherData?.city_name || "Localização"}
+            </Text>
             <Image
               source={require("@/assets/expand-more.png")}
               className="w-4 h-4"

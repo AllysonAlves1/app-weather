@@ -21,7 +21,7 @@ export function CardWeek() {
   };
 
   return (
-    <View className="w-full items-center justify-center bg-neutral-900/10 shadow-lg py-2 px-4 rounded-xl mt-4">
+    <View className="w-full items-center justify-center bg-neutral-900/10 shadow-lg py-2 px-4 rounded-xl">
       <View className="w-full flex-row justify-between items-center mb-2">
         <Text className="text-lg font-bold text-white">Next Forecast</Text>
         <Image source={require("@/assets/calendar.png")} />
@@ -30,7 +30,7 @@ export function CardWeek() {
       {forecast.map((day, index) => (
         <View
           key={index}
-          className="w-full flex-row justify-between items-center"
+          className="w-full flex-row justify-between items-center m-1"
         >
           <Text className="text-slate-50 w-8">
             {day.weekday.substring(0, 3)}
@@ -38,8 +38,8 @@ export function CardWeek() {
           <Badge
             label={day.rain_probability + "%"}
             icon={require("@/assets/rainmeter.png")}
-            labelClasses="ml-2 text-white w-8"
-            className="mx-2 p-2 flex-row items-center justify-center"
+            labelClasses="ml-2 text-white w-10"
+            className="flex-row items-center justify-center"
           />
           <Image
             source={
@@ -47,7 +47,7 @@ export function CardWeek() {
             }
             className="h-6 w-6"
           />
-          <View className="flex-row items-center">
+          <View className="flex-row items-center w-10">
             <Text className="text-slate-50">{day.max} </Text>
             <Text className="text-slate-300 text-xs">{day.min}</Text>
           </View>

@@ -9,7 +9,7 @@ export function PropertiesWeather() {
     <View className="bg-neutral-900/10 rounded-full shadow-lg">
       <View className="w-full items-center flex-row justify-between flex-wrap">
         <Badge
-          label={weatherData?.rain.toString() + "%"}  
+          label={weatherData?.forecast[0].rain_probability.toString() + "%"}
           labelClasses="ml-2 text-white"
           icon={require("@/assets/grain.png")}
           className="mx-2 p-2 flex-row items-center justify-center"
